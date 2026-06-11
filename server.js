@@ -98,6 +98,9 @@ app.post('/send', async (req, res) => {
     res.json({ success: false, error: err.message });
   }
 });
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/public/index.html');
+});
 
 app.listen(PORT, () => {
   console.log(`\n🚀 Kailvora Server running at http://localhost:${PORT}`);
