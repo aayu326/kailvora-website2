@@ -971,7 +971,7 @@ async function handleSubmit() {
   btn.style.background = '#888';
   msg.style.display = 'none';
   try {
-    const res = await fetch('http://localhost:3001/send', {
+   const res = await fetch('/send', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, phone, email, service, message })
