@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3001;
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static('.'));  // serve kailvora-infra.html
+app.use(express.static('public'));  // serve kailvora-infra.html
 
 // ── Nodemailer transporter ──
 const transporter = nodemailer.createTransport({
