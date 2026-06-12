@@ -27,7 +27,7 @@ nav {
   position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
   padding: 0 5%;
   display: flex; align-items: center; justify-content: space-between;
-  height: 72px;
+  height: 85px;
   background: rgba(10,22,40,0.97);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(200,151,58,0.2);
@@ -44,6 +44,13 @@ nav {
 .logo-text { display: flex; flex-direction: column; }
 .logo-name { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 600; color: var(--white); letter-spacing: 0.5px; }
 .logo-sub { font-size: 10px; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; }
+
+.logo-wrap img {
+    height: 75px;
+    width: auto;
+    display: block;
+}
+  
 .nav-links { display: flex; gap: 32px; list-style: none; }
 .nav-links a { text-decoration: none; color: rgba(255,255,255,0.8); font-size: 14px; font-weight: 400; letter-spacing: 0.3px; transition: color 0.2s; position: relative; }
 .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1px; background:var(--gold); transition: width 0.3s; }
