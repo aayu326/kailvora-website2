@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RERA Compliance | Kailvora Infra Private Limited</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0a1628;
+  --navy-mid: #122040;
+  --gold: #c8973a;
+  --gold-light: #e8b85a;
+  --gold-pale: #f5e9d0;
+  --cream: #faf7f2;
+  --white: #ffffff;
+  --text: #1a1a2e;
+  --muted: #6b7280;
+  --border: #e5ddd0;
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+
+nav {
+  position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+  padding: 0 5%;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 85px;
+  background: rgba(10,22,40,0.97);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(200,151,58,0.2);
+  transition: all 0.3s;
+}
+.logo-wrap { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.logo-wrap img { height: 170px; width: 250px; display: block; }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a { text-decoration: none; color: rgba(255,255,255,0.8); font-size: 14px; font-weight: 400; letter-spacing: 0.3px; transition: color 0.2s; position: relative; }
+.nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1px; background:var(--gold); transition: width 0.3s; }
+.nav-links a:hover { color: var(--gold-light); }
+.nav-links a:hover::after { width: 100%; }
+.nav-cta { padding: 10px 24px; background: var(--gold); color: var(--navy); font-size: 13px; font-weight: 600; border: none; cursor: pointer; letter-spacing: 0.5px; transition: all 0.2s; text-decoration: none; }
+.nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+.content { padding: 120px 5% 60px; max-width: 900px; margin: 0 auto; }
+.content h1 { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 600; color: var(--navy); margin-bottom: 16px; }
+.content-date { font-size: 13px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 32px; }
+.content h2 { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 600; color: var(--navy); margin-top: 40px; margin-bottom: 16px; }
+.content p { font-size: 15px; color: var(--muted); line-height: 1.8; margin-bottom: 16px; }
+.content ul { margin-left: 20px; margin-bottom: 20px; }
+.content li { font-size: 15px; color: var(--muted); line-height: 1.8; margin-bottom: 10px; }
+.divider { width: 48px; height: 2px; background: var(--gold); margin: 30px 0; }
+.compliance-box { background: rgba(200, 151, 58, 0.1); border-left: 4px solid var(--gold); padding: 20px; margin: 20px 0; border-radius: 4px; }
+.compliance-box strong { color: var(--navy); }
+
+footer { background: #060e1c; padding: 60px 5% 30px; }
+.footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+.footer-col h4 { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-col ul li a { text-decoration: none; color: rgba(255,255,255,0.5); font-size: 13px; transition: color 0.2s; }
+.footer-col ul li a:hover { color: var(--gold-light); }
+.footer-bottom { padding-top: 28px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+.footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.3); }
+.footer-socials { display: flex; gap: 10px; }
+.social-btn { width: 34px; height: 34px; border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.4); text-decoration: none; font-size: 14px; transition: all 0.2s; }
+.social-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+@media (max-width: 768px) {
+  .content { padding: 100px 5% 40px; }
+  .content h1 { font-size: 32px; }
+  .content h2 { font-size: 22px; }
+  nav { height: 60px; }
+  .logo-wrap img { height: 120px; width: 180px; }
+}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="kailvora-fixed.html" class="logo-wrap">
+    <img src="https://client-site-build--jatinsingh20.replit.app/assets/download-removebg-preview_1781201970356-BKlUyDMD.png" alt="Kailvora Infra Logo">
+  </a>
+  <ul class="nav-links">
+    <li><a href="kailvora-fixed.html#about">About</a></li>
+    <li><a href="kailvora-fixed.html#services">Services</a></li>
+    <li><a href="kailvora-fixed.html#vision">Vision</a></li>
+    <li><a href="kailvora-fixed.html#contact">Contact</a></li>
+  </ul>
+  <a href="kailvora-fixed.html#contact" class="nav-cta">Get in Touch</a>
+</nav>
+
+<div class="content">
+  <h1>RERA Compliance</h1>
+  <p class="content-date">Last Updated: June 2026</p>
+  <div class="divider"></div>
+
+  <h2>About RERA</h2>
+  <p>The Real Estate (Regulation and Development) Act, 2016 (RERA) is a landmark legislation enacted by the Government of India to regulate the real estate sector and promote transparency and accountability in the industry. Kailvora Infra Private Limited is fully committed to complying with all provisions of RERA.</p>
+
+  <h2>Company RERA Registration Details</h2>
+  <div class="compliance-box">
+    <p><strong>Company Name:</strong> Kailvora Infra Private Limited</p>
+    <p><strong>CIN:</strong> U68100HR2026PTC146137</p>
+    <p><strong>Registered Under:</strong> MCA - Ministry of Corporate Affairs</p>
+    <p><strong>Jurisdiction:</strong> RoC-Haryana (Registrar of Companies)</p>
+    <p><strong>Incorporation Date:</strong> 27 May 2026</p>
+  </div>
+
+  <h2>RERA Compliance Commitment</h2>
+  <p>Kailvora Infra is committed to:</p>
+  <ul>
+    <li>Maintaining complete transparency in all real estate transactions</li>
+    <li>Providing accurate project information to buyers and investors</li>
+    <li>Adhering to all timelines and delivery commitments</li>
+    <li>Following all statutory requirements and regulations</li>
+    <li>Protecting buyer interests and maintaining trust</li>
+    <li>Handling complaints and grievances promptly and fairly</li>
+  </ul>
+
+  <h2>Key RERA Provisions We Follow</h2>
+  <ul>
+    <li><strong>Transparency in Advertising:</strong> All project information, specifications, and terms are clearly communicated</li>
+    <li><strong>Proper Documentation:</strong> All agreements and contracts comply with RERA standards</li>
+    <li><strong>Escrow Accounts:</strong> Buyer funds are maintained in escrow accounts as per RERA requirements</li>
+    <li><strong>Progress Updates:</strong> Regular updates on project progress and construction milestones</li>
+    <li><strong>Compliance with Specifications:</strong> Projects are developed strictly as per approved plans and specifications</li>
+    <li><strong>Grievance Redressal:</strong> Dedicated system for addressing buyer complaints and concerns</li>
+  </ul>
+
+  <h2>Buyer Protection Under RERA</h2>
+  <p>Under RERA, buyers are protected through:</p>
+  <ul>
+    <li>Right to full information about the project</li>
+    <li>Protection against misrepresentation by developers</li>
+    <li>Guaranteed interest rate on delayed refunds</li>
+    <li>Compensation for delay in possession</li>
+    <li>Right to lodge complaints with RERA authorities</li>
+    <li>Enhanced security of investments through escrow accounts</li>
+  </ul>
+
+  <h2>Haryana RERA Authority</h2>
+  <p>For RERA-related queries, grievances, or complaints, you can contact the Haryana Real Estate Regulatory Authority:</p>
+  <div class="compliance-box">
+    <p><strong>Haryana RERA</strong></p>
+    <p>Website: <a href="https://www.haryanarera.gov.in" target="_blank" style="color: var(--gold);">https://www.haryanarera.gov.in</a></p>
+    <p>Registered Office: Jind Road, Sector-42, Faridabad, Haryana</p>
+    <p>You can file complaints and view project details on the official RERA portal.</p>
+  </div>
+
+  <h2>Our Commitment to RERA Standards</h2>
+  <p>We believe that RERA protects both buyers and developers by establishing clear guidelines and standards. Kailvora Infra welcomes RERA regulations as they:</p>
+  <ul>
+    <li>Promote fair dealing in the real estate industry</li>
+    <li>Build buyer confidence and trust</li>
+    <li>Ensure professional conduct by developers</li>
+    <li>Provide a transparent framework for real estate transactions</li>
+    <li>Establish clear dispute resolution mechanisms</li>
+  </ul>
+
+  <h2>Project-Specific RERA Compliance</h2>
+  <p>For all our projects:</p>
+  <ul>
+    <li>We maintain detailed approved plans and layouts with RERA authority</li>
+    <li>All project information is registered with RERA</li>
+    <li>Buyer agreements are prepared as per RERA format</li>
+    <li>We maintain separate escrow accounts for each project</li>
+    <li>Regular status updates are provided to registered buyers</li>
+    <li>All documentation is transparent and readily available</li>
+  </ul>
+
+  <h2>Buyer Grievance Redressal</h2>
+  <p>If you have any concerns or complaints regarding our projects:</p>
+  <ul>
+    <li><strong>Step 1:</strong> Contact our customer service team directly</li>
+    <li><strong>Step 2:</strong> If unresolved, escalate to our management</li>
+    <li><strong>Step 3:</strong> File a formal complaint with Haryana RERA authority</li>
+  </ul>
+
+  <h2>Contact Us for RERA Information</h2>
+  <p>For any RERA-related queries or project compliance information, please reach out to us:</p>
+  <ul>
+    <li><strong>Email:</strong> thereliableestates25@gmail.com</li>
+    <li><strong>Phone:</strong> +91 9213903156</li>
+    <li><strong>Address:</strong> C/o Anita, Bawadi Colony, Farrukh Nagar, Gurugram, Haryana – 122506</li>
+  </ul>
+
+  <h2>Important Notice</h2>
+  <p>This page is intended to provide general information about RERA compliance and our commitment to the Act. For specific legal advice regarding RERA or your individual transaction, please consult with a qualified real estate attorney or the Haryana RERA authority directly.</p>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <p style="font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.7; margin-top: 16px; max-width: 280px;">Creating Landmarks with Vision and Values. A trusted real estate and infrastructure company based in Gurugram, Haryana.</p>
+      <p style="font-size: 11px; color: rgba(255,255,255,0.3); margin-top: 12px; letter-spacing: 0.5px;">CIN: U68100HR2026PTC146137 | RoC-Haryana</p>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="kailvora-fixed.html#about">About Us</a></li>
+        <li><a href="kailvora-fixed.html#vision">Vision & Mission</a></li>
+        <li><a href="kailvora-fixed.html#why">Why Choose Us</a></li>
+        <li><a href="kailvora-fixed.html#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="kailvora-fixed.html#services">Real Estate Development</a></li>
+        <li><a href="kailvora-fixed.html#services">Property Consultancy</a></li>
+        <li><a href="kailvora-fixed.html#services">Land Acquisition</a></li>
+        <li><a href="kailvora-fixed.html#services">Joint Ventures</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="terms-conditions.html">Terms & Conditions</a></li>
+        <li><a href="disclaimer.html">Disclaimer</a></li>
+        <li><a href="rera-compliance.html">RERA Compliance</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Kailvora Infra Private Limited. All Rights Reserved.</p>
+    <div class="footer-socials">
+      <a href="https://www.linkedin.com/company/kailvora-infra" target="_blank" class="social-btn" title="LinkedIn">in</a>
+      <a href="https://www.facebook.com/kailvora2026" target="_blank" class="social-btn" title="Facebook">f</a>
+      <a href="https://www.instagram.com/kailvora2026" target="_blank" class="social-btn" title="Instagram">ig</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
