@@ -98,8 +98,22 @@ app.post('/send', async (req, res) => {
     res.json({ success: false, error: err.message });
   }
 });
+
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/public/index.html');
+});
+
+app.get('/privacy-policy.html', (req, res) => {
+  res.sendFile(__dirname + '/public/privacy-policy.html');
+});
+app.get('/terms-conditions.html', (req, res) => {
+  res.sendFile(__dirname + '/public/terms-conditions.html');
+});
+app.get('/disclaimer.html', (req, res) => {
+  res.sendFile(__dirname + '/public/disclaimer.html');
+});
+app.get('/rera-compliance.html', (req, res) => {
+  res.sendFile(__dirname + '/public/rera-compliance.html');
 });
 
 app.listen(PORT, () => {
