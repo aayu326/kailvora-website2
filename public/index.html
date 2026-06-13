@@ -373,6 +373,25 @@ footer { background: #060e1c; padding: 60px 5% 30px; }
 .team-social-btn:hover { background: var(--navy); color: var(--gold); border-color: var(--navy); }
 @media (max-width: 768px) { .team-grid { grid-template-columns: 1fr; } .team-img-wrap { height: 320px; } }
 
+/* ── POPUP MODAL ── */
+.popup-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 2000; align-items: center; justify-content: center; }
+.popup-overlay.active { display: flex; }
+.popup-modal { background: var(--white); border-radius: 8px; max-width: 500px; width: 90%; padding: 40px; position: relative; box-shadow: 0 10px 60px rgba(0,0,0,0.3); animation: popupSlide 0.4s ease; }
+@keyframes popupSlide { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.popup-close { position: absolute; top: 16px; right: 16px; width: 32px; height: 32px; background: none; border: none; font-size: 24px; color: var(--muted); cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.popup-close:hover { color: var(--navy); }
+.popup-header { margin-bottom: 24px; }
+.popup-header h2 { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+.popup-header p { font-size: 14px; color: var(--muted); }
+.popup-form-group { margin-bottom: 16px; }
+.popup-form-group label { display: block; font-size: 12px; font-weight: 600; color: var(--navy); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+.popup-form-group input { width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 4px; font-size: 14px; font-family: 'DM Sans', sans-serif; }
+.popup-form-group input:focus { outline: none; border-color: var(--gold); background: rgba(200,151,58,0.05); }
+.popup-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 24px; }
+.popup-btn-submit { padding: 12px; background: var(--gold); color: var(--navy); border: none; border-radius: 4px; font-weight: 600; font-size: 14px; cursor: pointer; transition: all 0.2s; }
+.popup-btn-submit:hover { background: var(--gold-light); }
+.popup-btn-close { padding: 12px; background: transparent; color: var(--muted); border: 1px solid var(--border); border-radius: 4px; font-weight: 500; font-size: 14px; cursor: pointer; transition: all 0.2s; }
+.popup-btn-close:hover { background: var(--cream); color: var(--navy); }
 
 .whatsapp-float {
   position: fixed;
@@ -396,7 +415,6 @@ footer { background: #060e1c; padding: 60px 5% 30px; }
   box-shadow: 0 6px 28px rgba(37,211,102,0.5);
 }
   
-
 </style>
 </head>
 <body>
@@ -704,8 +722,6 @@ footer { background: #060e1c; padding: 60px 5% 30px; }
   </div>
 </section>
 
-
-
 <!-- TEAM SECTION -->
 <section class="team" id="team">
   <div class="section-header reveal" style="text-align:center;">
@@ -950,6 +966,35 @@ footer { background: #060e1c; padding: 60px 5% 30px; }
   </div>
 </section>
 
+<!-- CONTACT POPUP -->
+<div class="popup-overlay" id="contactPopup">
+  <div class="popup-modal">
+    <button class="popup-close" onclick="closeContactPopup()">✕</button>
+    <div class="popup-header">
+      <h2>Get Expert Consultation</h2>
+      <p>Tell us about your real estate goals</p>
+    </div>
+    <form id="popupForm">
+      <div class="popup-form-group">
+        <label>Your Name *</label>
+        <input type="text" id="popupName" placeholder="Full name" required>
+      </div>
+      <div class="popup-form-group">
+        <label>Phone Number *</label>
+        <input type="tel" id="popupPhone" placeholder="+91 XXXXX XXXXX" required>
+      </div>
+      <div class="popup-form-group">
+        <label>Email Address *</label>
+        <input type="email" id="popupEmail" placeholder="your@email.com" required>
+      </div>
+      <div class="popup-buttons">
+        <button type="submit" class="popup-btn-submit">Get Consultation</button>
+        <button type="button" class="popup-btn-close" onclick="closeContactPopup()">Maybe Later</button>
+      </div>
+    </form>
+  </div>
+</div>
+
 <!-- FOOTER - FIXED LINKS -->
 <footer>
   <div class="footer-top">
@@ -981,10 +1026,10 @@ footer { background: #060e1c; padding: 60px 5% 30px; }
     <div class="footer-col">
       <h4>Legal</h4>
       <ul>
-       <li><a href="/privacy-policy.html">Privacy Policy</a></li>
-<li><a href="/terms-conditions.html">Terms & Conditions</a></li>
-<li><a href="/disclaimer.html">Disclaimer</a></li>
-<li><a href="/rera-compliance.html">MCA Compliance</a></li>
+        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="terms-conditions.html">Terms & Conditions</a></li>
+        <li><a href="disclaimer.html">Disclaimer</a></li>
+        <li><a href="rera-compliance.html">RERA Compliance</a></li>
       </ul>
     </div>
   </div>
@@ -1000,6 +1045,41 @@ footer { background: #060e1c; padding: 60px 5% 30px; }
 </footer>
 
 <script>
+// Popup functions
+function openContactPopup() {
+  document.getElementById('contactPopup').classList.add('active');
+}
+
+function closeContactPopup() {
+  document.getElementById('contactPopup').classList.remove('active');
+}
+
+// Close popup when clicking outside
+document.getElementById('contactPopup').addEventListener('click', function(e) {
+  if(e.target === this) {
+    closeContactPopup();
+  }
+});
+
+// Show popup on page load (after 2 seconds)
+window.addEventListener('load', function() {
+  setTimeout(openContactPopup, 2000);
+});
+
+// Popup form submission
+document.getElementById('popupForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const name = document.getElementById('popupName').value.trim();
+  const phone = document.getElementById('popupPhone').value.trim();
+  const email = document.getElementById('popupEmail').value.trim();
+  
+  if(name && phone && email) {
+    alert('✅ Thank you! We will contact you within 24 hours.\n\nName: ' + name + '\nPhone: ' + phone + '\nEmail: ' + email);
+    closeContactPopup();
+    this.reset();
+  }
+});
+
 // Hamburger
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');
@@ -1084,7 +1164,8 @@ window.addEventListener('scroll', () => {
   else { nav.style.height = '72px'; }
 });
 </script>
-  <a href="https://wa.me/919213903156?text=Hello%2C%20I'm%20interested%20in%20your%20real%20estate%20services." target="_blank" class="whatsapp-float" title="Chat on WhatsApp">
+
+<a href="https://wa.me/919213903156?text=Hello%2C%20I'm%20interested%20in%20your%20real%20estate%20services." target="_blank" class="whatsapp-float" title="Chat on WhatsApp">
   <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="white">
     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
     <path d="M12 0C5.373 0 0 5.373 0 12c0 2.115.549 4.103 1.51 5.833L.057 23.077a.75.75 0 00.866.866l5.244-1.453A11.953 11.953 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.686-.497-5.23-1.367l-.374-.215-3.882 1.078 1.078-3.882-.215-.374A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
