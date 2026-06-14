@@ -65,7 +65,6 @@ nav {
 .mobile-menu.open { display: flex; }
 
 /* ── HERO ── */
-/* ── HERO ── */
 .hero {
   min-height: 100vh; position: relative; display: flex; align-items: center;
   padding: 0 5%; padding-top: 72px; padding-bottom: 160px;
@@ -126,19 +125,7 @@ nav {
   animation: fadeUp 0.6s 0.3s ease both;
 }
 .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; animation: fadeUp 0.6s 0.4s ease both; }
-.btn-primary {
-  padding: 14px 32px;
-  background: var(--gold);
-  color: #ffffff !important;
-  font-size: 14px;
-  font-weight: 600;
-  border: none;
-  cursor: pointer;
-  letter-spacing: 0.5px;
-  transition: all 0.25s;
-  text-decoration: none;
-  display: inline-block;
-}
+.btn-primary { padding: 14px 32px; background: var(--gold); color: var(--navy); font-size: 14px; font-weight: 600; border: none; cursor: pointer; letter-spacing: 0.5px; transition: all 0.25s; text-decoration: none; display: inline-block; }
 .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
 .btn-outline { padding: 14px 32px; background: transparent; color: var(--gold); font-size: 14px; font-weight: 500; border: 2px solid rgba(200,151,58,0.7); cursor: pointer; letter-spacing: 0.5px; transition: all 0.25s; text-decoration: none; display: inline-block; }
 .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
@@ -165,7 +152,6 @@ section { padding: 96px 5%; }
 .section-header { margin-bottom: 56px; }
 .divider { width: 48px; height: 2px; background: var(--gold); margin: 18px 0; }
 
-/* ── ABOUT ── */
 /* ── ABOUT ── */
 .about { background: var(--white); }
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
@@ -206,10 +192,29 @@ section { padding: 96px 5%; }
 .service-card::before { content:''; position:absolute; bottom:0; left:0; width:100%; height:3px; background:var(--gold); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
 .service-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(10,22,40,0.1); }
 .service-card:hover::before { transform: scaleX(1); }
+.service-card.active-card { border-color: var(--gold); box-shadow: 0 0 0 2px var(--gold); transform: translateY(-6px); }
+.service-card.active-card::before { transform: scaleX(1); }
 .service-icon { width: 52px; height: 52px; background: var(--navy); display: flex; align-items: center; justify-content: center; margin-bottom: 22px; font-size: 22px; }
 .service-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: var(--navy); margin-bottom: 12px; }
 .service-card p { font-size: 14px; color: var(--muted); line-height: 1.65; }
-.service-arrow { display: inline-flex; align-items: center; gap: 6px; margin-top: 20px; font-size: 12px; font-weight: 600; color: var(--gold); letter-spacing: 1px; text-transform: uppercase; }
+.service-arrow { display: inline-flex; align-items: center; gap: 6px; margin-top: 20px; font-size: 12px; font-weight: 600; color: var(--gold); letter-spacing: 1px; text-transform: uppercase; text-decoration: none; }
+
+/* ── SERVICE POPUP ── */
+.service-popup-overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); z-index:3000; align-items:center; justify-content:center; }
+.service-popup-overlay.active { display:flex; }
+.service-popup { background:var(--white); max-width:560px; width:90%; padding:40px; position:relative; animation:popupSlide 0.3s ease; max-height:90vh; overflow-y:auto; }
+.service-popup-close { position:absolute; top:16px; right:16px; width:32px; height:32px; background:none; border:none; font-size:24px; color:var(--muted); cursor:pointer; display:flex; align-items:center; justify-content:center; }
+.service-popup-close:hover { color:var(--navy); }
+.service-popup-icon { width:56px; height:56px; background:var(--navy); display:flex; align-items:center; justify-content:center; font-size:24px; margin-bottom:20px; }
+.service-popup h2 { font-family:'Cormorant Garamond',serif; font-size:32px; color:var(--navy); margin-bottom:12px; }
+.service-popup p { font-size:14px; color:var(--muted); line-height:1.75; margin-bottom:16px; }
+.service-popup ul { padding-left:20px; margin-bottom:20px; }
+.service-popup ul li { font-size:14px; color:var(--muted); line-height:1.8; }
+.service-popup-btns { display:flex; gap:12px; flex-wrap:wrap; margin-top:24px; }
+.service-popup-wa { display:inline-flex; align-items:center; gap:8px; padding:12px 24px; background:#25D366; color:white; font-size:14px; font-weight:600; border:none; cursor:pointer; text-decoration:none; transition:all 0.2s; }
+.service-popup-wa:hover { background:#20ba5a; }
+.service-popup-contact { display:inline-flex; align-items:center; gap:8px; padding:12px 24px; background:var(--gold); color:var(--navy); font-size:14px; font-weight:600; border:none; cursor:pointer; text-decoration:none; transition:all 0.2s; }
+.service-popup-contact:hover { background:var(--gold-light); }
 
 /* ── VISION ── */
 .vision {
@@ -357,24 +362,8 @@ footer { background: #060e1c; padding: 60px 5% 30px; }
 .team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; max-width: 900px; margin: 0 auto; }
 .team-card { background: var(--white); border: 1px solid var(--border); overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; }
 .team-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(10,22,40,0.1); }
-
-.team-img-wrap { 
-  position: relative; 
-  height: 550px;
-  overflow: hidden; 
-  background: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.team-img { 
-  width: 100%; 
-  height: 100%; 
-  object-fit: cover;
-  object-position: center; 
-}
-  
+.team-img-wrap { position: relative; height: 550px; overflow: hidden; background: #ffffff; display: flex; align-items: center; justify-content: center; }
+.team-img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
 .team-card:hover .team-img { transform: scale(1.04); }
 .team-role-badge { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(10,22,40,0.92), transparent); padding: 32px 20px 16px; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); font-weight: 600; }
 .team-info { padding: 24px 28px 28px; }
@@ -406,36 +395,20 @@ footer { background: #060e1c; padding: 60px 5% 30px; }
 .popup-btn-close:hover { background: var(--cream); color: var(--navy); }
 
 .whatsapp-float {
-  position: fixed;
-  bottom: 32px;
-  right: 32px;
-  width: 58px;
-  height: 58px;
-  background: #25D366;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 20px rgba(37,211,102,0.4);
-  z-index: 9999;
-  transition: all 0.3s;
-  text-decoration: none;
+  position: fixed; bottom: 32px; right: 32px; width: 58px; height: 58px;
+  background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.4); z-index: 9999; transition: all 0.3s; text-decoration: none;
 }
-.whatsapp-float:hover {
-  background: #20ba5a;
-  transform: scale(1.1);
-  box-shadow: 0 6px 28px rgba(37,211,102,0.5);
-}
-  
+.whatsapp-float:hover { background: #20ba5a; transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,0.5); }
 </style>
 </head>
 <body>
 
 <!-- NAVBAR -->
 <nav id="navbar">
- <a href="#" class="logo-wrap">
+  <a href="#" class="logo-wrap">
     <img src="https://client-site-build--jatinsingh20.replit.app/assets/download-removebg-preview_1781201970356-BKlUyDMD.png" alt="Kailvora Infra Logo">
-</a>
+  </a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
@@ -519,21 +492,21 @@ footer { background: #060e1c; padding: 60px 5% 30px; }
         </svg>
       </div>
       <div class="about-img-accent">
-  <div class="acc-stat">
-    <div class="acc-num">2026</div>
-    <div class="acc-label">Incorporated</div>
-  </div>
-  <div class="acc-divider"></div>
-  <div class="acc-stat">
-    <div class="acc-num">NCR</div>
-    <div class="acc-label">Focus Area</div>
-  </div>
-  <div class="acc-divider"></div>
-  <div class="acc-stat">
-    <div class="acc-icon">🏛️</div>
-    <div class="acc-label">MCA Registered</div>
-  </div>
-</div>
+        <div class="acc-stat">
+          <div class="acc-num">2026</div>
+          <div class="acc-label">Incorporated</div>
+        </div>
+        <div class="acc-divider"></div>
+        <div class="acc-stat">
+          <div class="acc-num">NCR</div>
+          <div class="acc-label">Focus Area</div>
+        </div>
+        <div class="acc-divider"></div>
+        <div class="acc-stat">
+          <div class="acc-icon">🏛️</div>
+          <div class="acc-label">MCA Registered</div>
+        </div>
+      </div>
       <div class="about-stripe"></div>
     </div>
     <div class="reveal">
@@ -578,41 +551,41 @@ footer { background: #060e1c; padding: 60px 5% 30px; }
     <p class="section-subtitle">A comprehensive range of real estate and infrastructure services tailored to create lasting value for every stakeholder.</p>
   </div>
   <div class="services-grid">
-    <div class="service-card reveal">
+    <div class="service-card reveal" onclick="openServicePopup('real-estate', event)">
       <div class="service-icon">🏗️</div>
       <h3>Real Estate Development</h3>
       <p>Residential, commercial, industrial, and township development projects built with precision, quality, and an eye for long-term value creation.</p>
-      <a href="#contact" class="service-arrow" style="text-decoration:none;">Learn More →</a>
+      <span class="service-arrow">Learn More →</span>
     </div>
-    <div class="service-card reveal">
+    <div class="service-card reveal" onclick="openServicePopup('consultancy', event)">
       <div class="service-icon">🔑</div>
       <h3>Property Consultancy</h3>
       <p>Expert advisory services for buying, selling, and leasing decisions. We provide transparent market intelligence to help you make informed investments.</p>
-      <a href="#contact" class="service-arrow" style="text-decoration:none;">Learn More →</a>
+      <span class="service-arrow">Learn More →</span>
     </div>
-    <div class="service-card reveal">
+    <div class="service-card reveal" onclick="openServicePopup('land', event)">
       <div class="service-icon">🌍</div>
       <h3>Land Acquisition</h3>
       <p>Strategic land aggregation and acquisition services for development and investment. We identify high-growth locations across Haryana and NCR.</p>
-      <a href="#contact" class="service-arrow" style="text-decoration:none;">Learn More →</a>
+      <span class="service-arrow">Learn More →</span>
     </div>
-    <div class="service-card reveal">
+    <div class="service-card reveal" onclick="openServicePopup('facility', event)">
       <div class="service-icon">🏢</div>
       <h3>Facility Management</h3>
       <p>End-to-end property and facility management services — from maintenance to leasing — ensuring your assets perform at their optimal best.</p>
-      <a href="#contact" class="service-arrow" style="text-decoration:none;">Learn More →</a>
+      <span class="service-arrow">Learn More →</span>
     </div>
-    <div class="service-card reveal">
+    <div class="service-card reveal" onclick="openServicePopup('jv', event)">
       <div class="service-icon">🤝</div>
       <h3>Joint Ventures</h3>
       <p>Strategic partnerships and collaborations with landowners, builders, financial institutions, and developers for large-scale project execution.</p>
-      <a href="#contact" class="service-arrow" style="text-decoration:none;">Learn More →</a>
+      <span class="service-arrow">Learn More →</span>
     </div>
-    <div class="service-card reveal">
+    <div class="service-card reveal" onclick="openServicePopup('infra', event)">
       <div class="service-icon">🏗️</div>
       <h3>Infrastructure Projects</h3>
       <p>Industrial, institutional, and large-scale infrastructure development with a focus on quality construction and timely project delivery.</p>
-      <a href="#contact" class="service-arrow" style="text-decoration:none;">Learn More →</a>
+      <span class="service-arrow">Learn More →</span>
     </div>
   </div>
 </section>
@@ -734,7 +707,7 @@ footer { background: #060e1c; padding: 60px 5% 30px; }
   </div>
 </section>
 
-<!-- TEAM SECTION -->
+<!-- TEAM -->
 <section class="team" id="team">
   <div class="section-header reveal" style="text-align:center;">
     <div class="section-label">Leadership</div>
@@ -743,18 +716,15 @@ footer { background: #060e1c; padding: 60px 5% 30px; }
     <p class="section-subtitle" style="margin:0 auto;">The visionary minds behind Kailvora Infra — driven by purpose, guided by integrity.</p>
   </div>
   <div class="team-grid">
-
-   <div class="team-card reveal">
-  <div class="team-img-wrap">
-  <img src="https://i.postimg.cc/1zhGV7JG/kalvora-infra-pvt-ltd.png" alt="Vibhash Kumar Singh">
-    <div class="team-role-badge">Founder &amp; CEO</div>
-  </div>
-  <div class="team-info">
-       <h3>Vibhash Kumar Singh</h3>
-<p class="team-desc">
-  Vibhash Kumar Singh is the Founder & CEO of The Kailvora Infra Pvt. Ltd., leading the company with a vision to redefine trust and excellence in the real estate industry. With strong expertise in real estate markets across Haryana and Delhi NCR, he focuses on strategic growth, client relationships, and innovative business development. His leadership is driven by transparency, commitment, and a passion for creating valuable investment opportunities for clients and partners.
-</p>
-<div class="team-socials">
+    <div class="team-card reveal">
+      <div class="team-img-wrap">
+        <img src="https://i.postimg.cc/1zhGV7JG/kalvora-infra-pvt-ltd.png" alt="Vibhash Kumar Singh">
+        <div class="team-role-badge">Founder &amp; CEO</div>
+      </div>
+      <div class="team-info">
+        <h3>Vibhash Kumar Singh</h3>
+        <p class="team-desc">Vibhash Kumar Singh is the Founder & CEO of The Kailvora Infra Pvt. Ltd., leading the company with a vision to redefine trust and excellence in the real estate industry. With strong expertise in real estate markets across Haryana and Delhi NCR, he focuses on strategic growth, client relationships, and innovative business development. His leadership is driven by transparency, commitment, and a passion for creating valuable investment opportunities for clients and partners.</p>
+        <div class="team-socials">
           <a href="https://www.instagram.com/kailvora2026" target="_blank" class="team-social-btn" title="Instagram">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
           </a>
@@ -767,18 +737,15 @@ footer { background: #060e1c; padding: 60px 5% 30px; }
         </div>
       </div>
     </div>
-
     <div class="team-card reveal">
       <div class="team-img-wrap">
-          <img src="https://i.postimg.cc/ZqvTmzk5/kailvora-gurram.webp" alt="Disha kumari">
+        <img src="https://i.postimg.cc/ZqvTmzk5/kailvora-gurram.webp" alt="Disha Kumari">
         <div class="team-role-badge">Co-Founder &amp; Director</div>
       </div>
       <div class="team-info">
-       <h3>Disha Kumari</h3>
-<p class="team-desc">
-  Disha Kumari is the Co-Founder & Director of The Kailvora Infra Pvt. Ltd., bringing a strong vision, leadership, and client-focused approach to the company. With expertise in operations, customer relationship management, and strategic planning, she plays a key role in driving the company's growth and maintaining service excellence. Her dedication, professionalism, and innovative mindset contribute significantly to building trusted relationships and shaping the future of Kailvora Infra.
-</p>
-<div class="team-socials">
+        <h3>Disha Kumari</h3>
+        <p class="team-desc">Disha Kumari is the Co-Founder & Director of The Kailvora Infra Pvt. Ltd., bringing a strong vision, leadership, and client-focused approach to the company. With expertise in operations, customer relationship management, and strategic planning, she plays a key role in driving the company's growth and maintaining service excellence. Her dedication, professionalism, and innovative mindset contribute significantly to building trusted relationships and shaping the future of Kailvora Infra.</p>
+        <div class="team-socials">
           <a href="https://www.facebook.com/share/1GZdJf8MLP/" target="_blank" class="team-social-btn" title="Facebook">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
           </a>
@@ -791,7 +758,6 @@ footer { background: #060e1c; padding: 60px 5% 30px; }
         </div>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -978,6 +944,24 @@ footer { background: #060e1c; padding: 60px 5% 30px; }
   </div>
 </section>
 
+<!-- SERVICE POPUP -->
+<div class="service-popup-overlay" id="servicePopup" onclick="closeServicePopupOverlay(event)">
+  <div class="service-popup">
+    <button class="service-popup-close" onclick="closeServicePopupBtn()">✕</button>
+    <div class="service-popup-icon" id="popupIcon"></div>
+    <h2 id="popupTitle"></h2>
+    <p id="popupDesc"></p>
+    <ul id="popupPoints"></ul>
+    <div class="service-popup-btns">
+      <a id="popupWA" href="#" target="_blank" class="service-popup-wa">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.115.549 4.103 1.51 5.833L.057 23.077a.75.75 0 00.866.866l5.244-1.453A11.953 11.953 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.686-.497-5.23-1.367l-.374-.215-3.882 1.078 1.078-3.882-.215-.374A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        WhatsApp Us
+      </a>
+      <a href="#contact" class="service-popup-contact" onclick="closeServicePopupBtn()">Schedule Consultation →</a>
+    </div>
+  </div>
+</div>
+
 <!-- CONTACT POPUP -->
 <div class="popup-overlay" id="contactPopup">
   <div class="popup-modal">
@@ -1007,7 +991,7 @@ footer { background: #060e1c; padding: 60px 5% 30px; }
   </div>
 </div>
 
-<!-- FOOTER - FIXED LINKS -->
+<!-- FOOTER -->
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
@@ -1056,35 +1040,143 @@ footer { background: #060e1c; padding: 60px 5% 30px; }
   <p class="footer-tagline">"Creating Landmarks with Vision and Values · Where Quality Meets Reliability"</p>
 </footer>
 
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/919213903156?text=Hello%2C%20I'm%20interested%20in%20your%20real%20estate%20services." target="_blank" class="whatsapp-float" title="Chat on WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="white">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.115.549 4.103 1.51 5.833L.057 23.077a.75.75 0 00.866.866l5.244-1.453A11.953 11.953 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.686-.497-5.23-1.367l-.374-.215-3.882 1.078 1.078-3.882-.215-.374A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+  </svg>
+</a>
+
 <script>
-// Popup functions
+// ── SERVICE DATA ──
+const services = {
+  'real-estate': {
+    icon: '🏗️',
+    title: 'Real Estate Development',
+    desc: 'We develop premium residential, commercial, industrial, and township projects across Haryana and Delhi NCR. Every project is built with precision engineering, quality materials, and a long-term value creation mindset.',
+    points: [
+      'Residential apartments, villas & plotted developments',
+      'Commercial office spaces & retail developments',
+      'Industrial parks & warehouse facilities',
+      'Township planning & execution',
+      'End-to-end project management from design to delivery'
+    ],
+    wa: 'Hello, I am interested in Real Estate Development services by Kailvora Infra. Please share more details.'
+  },
+  'consultancy': {
+    icon: '🔑',
+    title: 'Property Consultancy',
+    desc: 'Our expert advisors provide transparent, data-driven guidance for buying, selling, and leasing decisions. We help you navigate the complex real estate market with clarity and confidence.',
+    points: [
+      'Property buying & selling advisory',
+      'Commercial & residential leasing support',
+      'Market research & property valuation',
+      'Investment portfolio planning',
+      'Legal documentation & due diligence assistance'
+    ],
+    wa: 'Hello, I am interested in Property Consultancy services by Kailvora Infra. Please guide me.'
+  },
+  'land': {
+    icon: '🌍',
+    title: 'Land Acquisition',
+    desc: 'We identify and aggregate strategic land parcels in high-growth corridors across Haryana and NCR. Our deep local network ensures you get the best opportunities before they hit the open market.',
+    points: [
+      'Strategic land identification in high-growth zones',
+      'Land aggregation for large-scale developments',
+      'Title verification & legal clearance',
+      'Government approvals & compliance support',
+      'Investment land for future appreciation'
+    ],
+    wa: 'Hello, I am interested in Land Acquisition services by Kailvora Infra. Please share details.'
+  },
+  'facility': {
+    icon: '🏢',
+    title: 'Facility Management',
+    desc: 'We offer comprehensive end-to-end facility and property management services that keep your assets performing at their best — minimizing costs while maximizing returns.',
+    points: [
+      'Day-to-day property operations & maintenance',
+      'Tenant management & leasing support',
+      'Security, housekeeping & utilities management',
+      'Asset performance reporting & optimization',
+      'Vendor management & procurement'
+    ],
+    wa: 'Hello, I am interested in Facility Management services by Kailvora Infra. Please contact me.'
+  },
+  'jv': {
+    icon: '🤝',
+    title: 'Joint Ventures',
+    desc: 'We partner with landowners, builders, financial institutions, and developers to execute large-scale real estate and infrastructure projects. Our MOA explicitly enables joint ventures and development agreements.',
+    points: [
+      'Joint development agreements with landowners',
+      'Builder & developer collaborations',
+      'Financial institution partnerships',
+      'Revenue sharing & profit-split models',
+      'Residential, commercial & infrastructure JVs'
+    ],
+    wa: 'Hello, I am interested in Joint Venture opportunities with Kailvora Infra. Please connect with me.'
+  },
+  'infra': {
+    icon: '🏗️',
+    title: 'Infrastructure Projects',
+    desc: 'We undertake industrial, institutional, and large-scale infrastructure development projects. Our focus is always on quality construction, timely delivery, and long-term structural integrity.',
+    points: [
+      'Industrial parks & manufacturing facilities',
+      'Institutional buildings — schools, hospitals, offices',
+      'Road & civil infrastructure development',
+      'Government & private sector project execution',
+      'Quality-first construction with certified contractors'
+    ],
+    wa: 'Hello, I am interested in Infrastructure Project services by Kailvora Infra. Please share details.'
+  }
+};
+
+// ── SERVICE POPUP FUNCTIONS ──
+function openServicePopup(key, e) {
+  const s = services[key];
+  document.getElementById('popupIcon').textContent = s.icon;
+  document.getElementById('popupTitle').textContent = s.title;
+  document.getElementById('popupDesc').textContent = s.desc;
+  const ul = document.getElementById('popupPoints');
+  ul.innerHTML = s.points.map(p => `<li>${p}</li>`).join('');
+  const waMsg = encodeURIComponent(s.wa);
+  document.getElementById('popupWA').href = `https://wa.me/919213903156?text=${waMsg}`;
+  document.getElementById('servicePopup').classList.add('active');
+  // Highlight clicked card
+  document.querySelectorAll('.service-card').forEach(c => c.classList.remove('active-card'));
+  if(e && e.currentTarget) e.currentTarget.classList.add('active-card');
+}
+
+function closeServicePopupOverlay(e) {
+  if(e.target === document.getElementById('servicePopup')) {
+    document.getElementById('servicePopup').classList.remove('active');
+    document.querySelectorAll('.service-card').forEach(c => c.classList.remove('active-card'));
+  }
+}
+
+function closeServicePopupBtn() {
+  document.getElementById('servicePopup').classList.remove('active');
+  document.querySelectorAll('.service-card').forEach(c => c.classList.remove('active-card'));
+}
+
+// ── CONTACT POPUP ──
 function openContactPopup() {
   document.getElementById('contactPopup').classList.add('active');
 }
-
 function closeContactPopup() {
   document.getElementById('contactPopup').classList.remove('active');
 }
-
-// Close popup when clicking outside
 document.getElementById('contactPopup').addEventListener('click', function(e) {
-  if(e.target === this) {
-    closeContactPopup();
-  }
+  if(e.target === this) closeContactPopup();
 });
-
-// Show popup on page load (after 2 seconds)
 window.addEventListener('load', function() {
   setTimeout(openContactPopup, 2000);
 });
-
-// Popup form submission
 document.getElementById('popupForm').addEventListener('submit', function(e) {
   e.preventDefault();
   const name = document.getElementById('popupName').value.trim();
   const phone = document.getElementById('popupPhone').value.trim();
   const email = document.getElementById('popupEmail').value.trim();
-  
   if(name && phone && email) {
     alert('✅ Thank you! We will contact you within 24 hours.\n\nName: ' + name + '\nPhone: ' + phone + '\nEmail: ' + email);
     closeContactPopup();
@@ -1092,19 +1184,19 @@ document.getElementById('popupForm').addEventListener('submit', function(e) {
   }
 });
 
-// Hamburger
+// ── HAMBURGER ──
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');
 hamburger.addEventListener('click', () => { mobileMenu.classList.toggle('open'); });
 function closeMobile() { mobileMenu.classList.remove('open'); }
 
-// Scroll reveal
+// ── SCROLL REVEAL ──
 const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); } });
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// FAQ
+// ── FAQ ──
 function toggleFaq(el) {
   const item = el.parentElement;
   const wasOpen = item.classList.contains('open');
@@ -1112,7 +1204,7 @@ function toggleFaq(el) {
   if (!wasOpen) item.classList.add('open');
 }
 
-// Form
+// ── CONTACT FORM ──
 async function handleSubmit() {
   const btn = document.getElementById('submitBtn');
   const msg = document.getElementById('form-msg');
@@ -1134,7 +1226,7 @@ async function handleSubmit() {
   btn.style.background = '#888';
   msg.style.display = 'none';
   try {
-   const res = await fetch('/send', {
+    const res = await fetch('/send', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name, phone, email, service, message })
@@ -1153,9 +1245,7 @@ async function handleSubmit() {
       document.querySelector('.contact-form input[type="email"]').value = '';
       document.querySelector('.contact-form select').value = '';
       document.querySelector('.contact-form textarea').value = '';
-    } else {
-      throw new Error('Failed');
-    }
+    } else { throw new Error('Failed'); }
   } catch(e) {
     msg.style.display = 'block';
     msg.style.background = 'rgba(255,80,80,0.2)';
@@ -1169,19 +1259,12 @@ async function handleSubmit() {
   setTimeout(() => { btn.textContent = 'Send Message →'; btn.style.background = ''; }, 4000);
 }
 
-// Navbar shrink on scroll
+// ── NAVBAR SHRINK ──
 window.addEventListener('scroll', () => {
   const nav = document.getElementById('navbar');
   if (window.scrollY > 60) { nav.style.height = '60px'; }
   else { nav.style.height = '72px'; }
 });
 </script>
-
-<a href="https://wa.me/919213903156?text=Hello%2C%20I'm%20interested%20in%20your%20real%20estate%20services." target="_blank" class="whatsapp-float" title="Chat on WhatsApp">
-  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="white">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.115.549 4.103 1.51 5.833L.057 23.077a.75.75 0 00.866.866l5.244-1.453A11.953 11.953 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.9 0-3.686-.497-5.23-1.367l-.374-.215-3.882 1.078 1.078-3.882-.215-.374A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
-  </svg>
-</a>
 </body>
 </html>
